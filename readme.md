@@ -9,6 +9,8 @@ Make sure you have docker installed on your system and run the following command
 docker build -t autism:0.1 .
 ```
 
+Alternatively you can install the required packages on your system from the requirements.txt file.
+
 ## Usage
 
 To run the docker image, run the following command:
@@ -20,4 +22,9 @@ This will run the main.py python file which will train the model and save it upo
 The saved model can be copied from the docker container to the host machine by running the following command:
 ```
 docker cp <containerId>:/ASD_model ./ASD_model
+```
+
+If you had downloaded the required packages on your system manually, you can run the main.py file directly by running the following command:
+```
+python3 main.py
 ```
