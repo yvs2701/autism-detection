@@ -79,7 +79,7 @@ print(
     )
 )
 
-model.save("ASD_model", overwrite=True, save_format="keras")
+model.save("ASD_model", overwrite=True, save_format="h5")
 print("Model saved successfully!")
 
 # save the model by taking user input

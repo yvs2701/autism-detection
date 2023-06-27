@@ -7,7 +7,7 @@ WORKDIR /home/app/src
 
 #RUN instruction is used to execute any command during the build process of the docker image
 RUN pip3 install numpy scipy matplotlib pandas scikit-learn keras
-RUN pip3 install streamlit
+RUN pip3 install streamlit streamlit-option-menu
 RUN pip3 install tensorflow
 
 #COPY instruction is used to copy files from host machine to the container

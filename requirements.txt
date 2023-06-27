@@ -4,5 +4,6 @@ matplotlib
 pandas
 scikit-learn
 streamlit
+streamlit-option-menu
 keras
 tensorflow
