@@ -3,5 +3,6 @@ scipy
 matplotlib
 pandas
 scikit-learn
+streamlit
 keras
 tensorflow
