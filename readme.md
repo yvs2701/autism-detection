@@ -6,7 +6,7 @@
 
 Make sure you have docker installed on your system and run the following command to build the docker image:
 ```
-docker build -t aut-classifier:1.0 .
+docker image build -t aut-classifier:1.0 .
 ```
 
 Alternatively you can install the required packages on your system from the requirements.txt file.
@@ -17,12 +17,12 @@ To run the docker image, run the following command:
 ```
 docker run -it -p 8501:8501 --name autism-screening aut-classifier:1.0
 ```
-This will run the train.py python file which will train the model and save it upon user input. The Keras model will be saved as a folder in `./ASD_model/`.
+This will run the train.py python file which will train the model and save it upon user input. The Keras model will be saved as a folder in `./classifier/`.
 Then main.py file will run which will open the streamlit app on port 8501. The app can be accessed by going to `http://localhost:8501/` in your browser.
 
 The saved model can be copied from the docker container to the host machine by running the following command:
 ```
-docker cp <containerId>:/ASD_model ./ASD_model
+docker cp <containerId>:/classifier ./classifier
 ```
 
 If you had downloaded the required packages on your system manually, you can train the model by running the following command:
