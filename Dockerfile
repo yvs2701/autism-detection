@@ -5,18 +5,13 @@ LABEL Maintainer="yvs2701"
 #Any working directory can be chosen as per choice like '/' or '/home' etc
 WORKDIR /home/app/src
 
-#RUN instruction is used to execute any command during the build process of the docker image
-RUN pip3 install numpy scipy matplotlib pandas scikit-learn keras
-RUN pip3 install streamlit streamlit-option-menu
-RUN pip3 install tensorflow
-
 #COPY instruction is used to copy files from host machine to the container
-COPY requirements.txt ./
-COPY Autism_Data.csv ./
-COPY train.py ./
-COPY main.py ./
+COPY requirements.txt Autism_Data.csv train.py main.py ./
 
-RUN ["python3", "./train.py"]
+#RUN instruction is used to execute any command during the build process of the docker image
+RUN pip install --no-cache-dir -r requirements.txt
 
-#CMD instruction should be used to run the software
-CMD ["python", "./main.py"]
+#Expose the port on which the streamlit app will run
+EXPOSE 8501
+
+CMD ["sh", "-c", "python3 ./train.py; streamlit run ./main.py"]
