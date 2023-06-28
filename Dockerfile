@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 #Expose the port on which the streamlit app will run
 EXPOSE 8501
 
-CMD ["sh", "-c", "python3 ./train.py; streamlit run ./main.py"]
+CMD ["sh", "-c", "python3 ./train.py && streamlit run ./main.py"]
