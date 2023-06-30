@@ -42,3 +42,6 @@ Then, you can run the main.py file directly by running the following command:
 ```bash
 python3 main.py
 ```
+
+## Video Link - 
+https://drive.google.com/file/d/1eyaDznEfEg0ffFC8R2SS6nHikzOfZGOL/view?usp=sharing
