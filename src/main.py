@@ -12,30 +12,30 @@ st.title("Autism Detection - DL classification")
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    a1 = st.text_input("Ans 1 score")
+    a1 = st.number_input(label="Ans 1 score", min_value=0, max_value=1, step=1)
 with col2:
-    a2 = st.text_input("Ans 2 score")
+    a2 = st.number_input(label="Ans 2 score", min_value=0, max_value=1, step=1)
 with col3:
-    a3 = st.text_input("Ans 3 score")
+    a3 = st.number_input(label="Ans 3 score", min_value=0, max_value=1, step=1)
 
 with col1:
-    a4 = st.text_input("Ans 4 score")
+    a4 = st.number_input(label="Ans 4 score", min_value=0, max_value=1, step=1)
 with col2:
-    a5 = st.text_input("Ans 5 score")
+    a5 = st.number_input(label="Ans 5 score", min_value=0, max_value=1, step=1)
 with col3:
-    a6 = st.text_input("Ans 6 score")
+    a6 = st.number_input(label="Ans 6 score", min_value=0, max_value=1, step=1)
 
 with col1:
-    a7 = st.text_input("Ans 7 score")
+    a7 = st.number_input(label="Ans 7 score", min_value=0, max_value=1, step=1)
 with col2:
-    a8 = st.text_input("Ans 8 score")
+    a8 = st.number_input(label="Ans 8 score", min_value=0, max_value=1, step=1)
 with col3:
-    a9 = st.text_input("Ans 9 score")
+    a9 = st.number_input(label="Ans 9 score", min_value=0, max_value=1, step=1)
 
 with col1:
-    a10 = st.text_input("Ans 10 score")
+    a10 = st.number_input(label="Ans 10 score", min_value=0, max_value=1, step=1)
 with col2:
-    age = st.text_input("Age")
+    age = st.number_input(label="Age", min_value=0, max_value=1, step=1)
 with col3:
     gender = st.selectbox(
         'Gender',
@@ -60,7 +60,7 @@ with col1:
         'Used app before',
         ('no', 'yes'))
 with col2:
-    result = st.text_input("result")
+    result = st.number_input(label="result", min_value=0, step=1)
 with col3:
     relation = st.selectbox(
         'Relation',
@@ -129,16 +129,14 @@ if st.button("Autism Screening"):
                             columns=columns
                         )
 
-        prediction = (model.predict(np.asarray(df).astype(np.float32)))[0].tolist()
+        prediction = (model.predict(np.asarray(df).astype(np.float32)))[0]
         print(prediction)
 
-        confidence = round(prediction[1] * 100, 2)
-
-        if round(confidence, 0) == 1.0:
+        if np.argmax(prediction) == 1:
             diagnosis = "The person is autistic"
-            st.write('### The person is autistic', confidence, '%')
-            st.warn(diagnosis, icon="⚠️")
+            st.write('### The person is autistic', round((prediction[1] * 100), 2), '%')
+            st.warning(diagnosis, icon="⚠️")
         else:
             diagnosis = "The person is not autistic"
-            st.write('### The person is *not* autistic', round(prediction[0] * 100, 2), '%')
+            st.write('### The person is *not* autistic', round((prediction[0] * 100), 2), '%')
             st.success(diagnosis, icon="✅")
